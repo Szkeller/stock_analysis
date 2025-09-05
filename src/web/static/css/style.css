@@ -1,0 +1,372 @@
+/* A股散户分析系统样式 */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.hero-section {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 10px;
+}
+
+.card-header {
+    background-color: var(--light-color);
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 600;
+}
+
+.btn {
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.form-control, .form-select {
+    border-radius: 8px;
+}
+
+/* 搜索结果样式 */
+.search-result-item {
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.search-result-item:hover {
+    background-color: var(--light-color);
+    border-color: var(--primary-color);
+}
+
+/* 股票信息卡片 */
+.stock-info-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.stock-info-item:last-child {
+    border-bottom: none;
+}
+
+.stock-info-label {
+    font-weight: 600;
+    color: #6c757d;
+}
+
+.stock-info-value {
+    color: #212529;
+}
+
+/* 价格变化颜色 */
+.price-up {
+    color: var(--danger-color);
+}
+
+.price-down {
+    color: var(--success-color);
+}
+
+.price-neutral {
+    color: #6c757d;
+}
+
+/* 风险等级徽章 */
+.risk-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.risk-low {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.risk-medium {
+    background-color: #fff3cd;
+    color: #664d03;
+}
+
+.risk-high {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+/* 技术指标表格 */
+.indicators-table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.indicators-table td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.indicators-table td:first-child {
+    font-weight: 600;
+    color: #6c757d;
+    width: 30%;
+}
+
+/* 自选股表格 */
+.watchlist-table {
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.watchlist-table th,
+.watchlist-table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.watchlist-table th {
+    border-top: none;
+    font-weight: 600;
+    background-color: var(--light-color);
+}
+
+/* 排行榜样式 */
+.ranking-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: all 0.2s;
+}
+
+.ranking-item:hover {
+    background-color: var(--light-color);
+    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.ranking-number {
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.ranking-info {
+    flex: 1;
+}
+
+.ranking-symbol {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.ranking-name {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.ranking-value {
+    text-align: right;
+    font-weight: bold;
+}
+
+/* 预警列表 */
+.alert-item {
+    padding: 1rem;
+    border-left: 4px solid;
+    margin-bottom: 0.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.alert-info {
+    border-left-color: var(--info-color);
+    background-color: #cff4fc;
+}
+
+.alert-warning {
+    border-left-color: var(--warning-color);
+    background-color: #fff3cd;
+}
+
+.alert-critical {
+    border-left-color: var(--danger-color);
+    background-color: #f8d7da;
+}
+
+.alert-timestamp {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+/* 图表容器 */
+.chart-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.chart-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 信号标签 */
+.signal-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    margin: 0.125rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.signal-positive {
+    background-color: #d1e7dd;
+    color: #0f5132;
+}
+
+.signal-negative {
+    background-color: #f8d7da;
+    color: #842029;
+}
+
+.signal-neutral {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 1rem 0;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .ranking-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ranking-number {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+    
+    .ranking-value {
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+}
+
+/* 加载动画 */
+.loading-spinner {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 工具提示 */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 200px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.875rem;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* 成功/错误消息 */
+.message-success {
+    padding: 0.75rem 1rem;
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.message-error {
+    padding: 0.75rem 1rem;
+    background-color: #f8d7da;
+    color: #842029;
+    border: 1px solid #f5c2c7;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}

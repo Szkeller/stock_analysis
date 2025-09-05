@@ -1,0 +1,38 @@
+version: '3.8'
+
+# 开发环境配置 - 简化版
+services:
+  stock-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stock-analysis-dev
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - FLASK_ENV=development
+      - PYTHONPATH=/app
+      - TZ=Asia/Shanghai
+    env_file:
+      - .env
+    volumes:
+      # 开发时挂载源码目录，方便调试
+      - .:/app
+      # 持久化数据目录
+      - stock_data_dev:/app/data
+      - stock_logs_dev:/app/logs
+      - stock_charts_dev:/app/charts
+      - stock_output_dev:/app/output
+    networks:
+      - stock-network-dev
+
+volumes:
+  stock_data_dev:
+  stock_logs_dev:
+  stock_charts_dev:
+  stock_output_dev:
+
+networks:
+  stock-network-dev:
+    driver: bridge

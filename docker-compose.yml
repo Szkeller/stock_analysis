@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  stock-analysis:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stock-analysis-app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - FLASK_ENV=production
+      - PYTHONPATH=/app
+      - TZ=Asia/Shanghai
+    env_file:
+      - .env
+    volumes:
+      # 持久化数据目录
+      - stock_data:/app/data
+      - stock_logs:/app/logs
+      - stock_charts:/app/charts
+      - stock_output:/app/output
+    networks:
+      - stock-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  nginx:
+    image: nginx:alpine
+    container_name: stock-analysis-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - stock-analysis
+    networks:
+      - stock-network
+
+  # Redis缓存服务（可选）
+  redis:
+    image: redis:7-alpine
+    container_name: stock-analysis-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - stock-network
+    command: redis-server --appendonly yes
+
+volumes:
+  stock_data:
+  stock_logs:
+  stock_charts:
+  stock_output:
+  redis_data:
+
+networks:
+  stock-network:
+    driver: bridge

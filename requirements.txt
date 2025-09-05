@@ -1,0 +1,39 @@
+# 中国A股散户分析系统依赖
+# 数据获取和处理
+akshare>=1.14.0        # 中国股市数据获取
+tushare>=1.3.0         # 专业金融数据接口
+pandas>=1.5.0          # 数据处理
+numpy>=1.24.0          # 数值计算
+requests>=2.28.0       # HTTP请求
+
+# 技术指标计算 (使用一个即可)
+TA-Lib>=0.4.0          # 技术分析库
+matplotlib>=3.6.0      # 绘图
+plotly>=5.15.0         # 交互式图表
+seaborn>=0.12.0        # 统计可视化
+
+# Web框架
+flask>=2.3.0           # Web框架
+flask-cors>=4.0.0      # 跨域支持
+flask-socketio>=5.3.0  # 实时通信
+
+# 数据库
+# sqlite3 is built-in Python module
+sqlalchemy>=2.0.0      # ORM框架
+
+# 调度和监控
+schedule>=1.2.0        # 定时任务
+APScheduler>=3.10.0    # 高级调度器
+
+# 工具库
+python-dotenv>=1.0.0   # 环境变量管理
+loguru>=0.7.0          # 日志管理
+rich>=13.0.0           # 终端美化
+click>=8.1.0           # 命令行工具
+
+# 机器学习（可选）
+scikit-learn>=1.3.0    # 机器学习
+lightgbm>=4.0.0        # 梯度提升框架
+
+# 通知服务
+pushbullet.py>=0.12.0  # 推送通知
